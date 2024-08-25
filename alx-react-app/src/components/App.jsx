@@ -13,13 +13,7 @@ function App() {
 
   return (
     <>
-      <div>
-      <WelcomeMessage />
-      <MainContent/>
-      <Footer/>
-         <Header/>
-<UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
-        </div>
+     
         
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -38,14 +32,12 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-         <div>
+         </p>
       <WelcomeMessage />
       <MainContent/>
       <Footer/>
-         <Header/>
-<UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
-        </div>
-      </p>
+      <Header/>
+      <UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
     </>
   )
 }
