@@ -38,7 +38,13 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+         <div>
+      <WelcomeMessage />
+      <MainContent/>
+      <Footer/>
+         <Header/>
+<UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
+        </div>
       </p>
     </>
   )
