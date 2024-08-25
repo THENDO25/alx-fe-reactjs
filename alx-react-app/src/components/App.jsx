@@ -5,8 +5,8 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import WelcomeMessage from './WelcomeMessage';
 import Header from './Header';
-import MainContent from './MainContent';
 import Footer from './Footer';
+import MainContent from './MainContent';
 import UserProfile from './UserProfile';
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
         <button onClick={() => setCount(count + 1)}>count is {count}</button>
         <p>Edit <code>src/App.jsx</code> and save to test HMR</p>
       </div>
+    </div>
     </div>
   );
 }
