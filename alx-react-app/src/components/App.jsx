@@ -15,15 +15,12 @@ function App() {
     <>
       <div>
       <WelcomeMessage />
-        <div/>
-        <div>
-        <Header/>
-        <div/>
-        
-        <MainContent/>
-        <Footer/>
+      <MainContent/>
+      <Footer/>
+         <Header/>
+<UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
         </div>
-        <UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
+        
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
