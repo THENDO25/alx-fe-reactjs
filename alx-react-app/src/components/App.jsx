@@ -15,14 +15,12 @@ function App() {
 
   return (
     <>
-      
+  
+      <WelcomeMessage />
+     
       <a href="https://vitejs.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite logo" />
       </a>
-      <Header />
-      <WelcomeMessage />
-      <MainContent/>
-      <Footer/>
       <a href="https://react.dev" target="_blank">
         <img src={reactLogo} className="logo react" alt="React logo" />
       </a>
@@ -37,7 +35,11 @@ function App() {
       </div>
       <p className="read-the-docs">
       </p>
+        <Header />
+       <MainContent/>
+      <Footer/>
       <UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
+      
     </>
   )
 }
