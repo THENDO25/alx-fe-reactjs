@@ -1,10 +1,12 @@
+
 import React from 'react';
-function Header() {
-    return (
-        <main>
-        <p>I love to visit New York, Paris, and Tokyo.</p>
-      </main>
-    );
-  }
-  
-  export default Header;
+
+const MainContent = () => {
+  return (
+    <div>
+      // Your component content here
+    </div>
+  );
+};
+
+export default MainContent;
