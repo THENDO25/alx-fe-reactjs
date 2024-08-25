@@ -1,24 +1,25 @@
-import React from 'react';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import WelcomeMessage from './WelcomeMessage'
+
+import React, { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import WelcomeMessage from './WelcomeMessage';
 import Header from './Header';
 import MainContent from './MainContent';
 import Footer from './Footer';
 import UserProfile from './UserProfile';
 
 function App() {
+  const [count, setCount] = useState(0);
 
   return (
-    
-  
-     <div>
-            <Header />
-            <MainContent />
-            <Footer />
-        
-     
+    <div>
+      <Header />
+      <MainContent />
+      <Footer />
+      <WelcomeMessage />
+      <UserProfile />
+
       <a href="https://vitejs.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite logo" />
       </a>
@@ -27,18 +28,12 @@ function App() {
       </a>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => setCount(count + 1)}>count is {count}</button>
+        <p>Edit <code>src/App.jsx</code> and save to test HMR</p>
       </div>
-      <p className="read-the-docs">
-      </p>
-      
-   </div>
+    </div>
   );
 }
 
-export default App
+export default App;
+Changes made:
