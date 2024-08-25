@@ -14,14 +14,13 @@ function App() {
   console.log('Rendering App component');
 
   return (
-    <>
+    
   
-     <>
-      <Header />
-      <MainContent />
-      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-      <Footer />
-    </>
+     <div>
+            <Header />
+            <MainContent />
+            <Footer />
+        
      
       <a href="https://vitejs.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -41,7 +40,7 @@ function App() {
       <p className="read-the-docs">
       </p>
       
-    </>
+   </div>
   );
 }
 
