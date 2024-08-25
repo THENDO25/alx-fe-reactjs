@@ -16,7 +16,12 @@ function App() {
   return (
     <>
   
-      <WelcomeMessage />
+     <>
+      <Header />
+      <MainContent />
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+      <Footer />
+    </>
      
       <a href="https://vitejs.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -35,13 +40,9 @@ function App() {
       </div>
       <p className="read-the-docs">
       </p>
-        <Header />
-       <MainContent/>
-      <Footer/>
-      <UserProfile name="Alice" age="25" bio="I do Hard things,Loves gaming and reading" />
       
     </>
-  )
+  );
 }
 
 export default App
