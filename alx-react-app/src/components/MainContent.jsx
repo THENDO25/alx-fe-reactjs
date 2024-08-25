@@ -1,11 +1,10 @@
-
 import React from 'react';
 
 const MainContent = () => {
   return (
-    <div>
-      // Your component content here
-    </div>
+    <main>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
+    </main>
   );
 };
 
