@@ -1,7 +1,12 @@
 import React from 'react';
 
-function BlogPost() {
-  return <h2>Blog Post</h2>;
-}
+const BlogPost = ({ id }) => {
+  return (
+    <div>
+      <h1>Blog Post {id}</h1>
+      {"doing hard things"}
+    </div>
+  );
+};
 
 export default BlogPost;
