@@ -11,7 +11,6 @@ const RegistrationForm = () => {
     if (!username || !email || !password) {
       setErrors({ message: 'All fields are required' });
     } else {
-      // API call to register user
       console.log('Registering user:', { username, email, password });
     }
   };
