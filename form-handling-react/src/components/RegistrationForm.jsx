@@ -8,31 +8,44 @@ const RegistrationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (!username) {
       setErrors((prevErrors) => ({ ...prevErrors, username: 'Username is required' }));
-    } else if (!email || !email.includes('@')) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email address' }));
-    } else if (!password || password.length < 8) {
-      setErrors((prevErrors) => ({ ...prevErrors, password: 'Password must be at least 8 characters' }));
+    } else if (!email) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
+    } else if (!password) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: 'Password is required' }));
     } else {
-    
+      // Form submission logic here
     }
   };
+
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      {errors.message && <p style={{ color: 'red' }}>{errors.message}</p>}
+      <input
+        type="text"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+        placeholder="Username"
+      />
+      {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
+
+      <input
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="Email"
+      />
+      {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
+
+      <input
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        placeholder="Password"
+      />
+      {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
+
       <button type="submit">Register</button>
     </form>
   );
