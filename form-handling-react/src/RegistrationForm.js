@@ -6,48 +6,31 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errorObject = {};
-    if (!username) errorObject.username = 'Username is required';
-    if (!email) errorObject.email = 'Email is required';
-    if (!password) errorObject.password = 'Password is required';
-    setErrors(errorObject);
-    if (Object.keys(errorObject).length === 0) {
-      // Call API to register user
-      console.log('Form submitted');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!username || !email || !password) {
+      setErrors({ message: 'All fields are required' });
+    } else {
+      // API call to register user
+      console.log('Registering user:', { username, email, password });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {errors.username && <p>{errors.username}</p>}
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {errors.email && <p>{errors.email}</p>}
-      </div>
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errors.password && <p>{errors.password}</p>}
-      </div>
+      <label>
+        Username:
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+      </label>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </label>
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      </label>
+      {errors.message && <p style={{ color: 'red' }}>{errors.message}</p>}
       <button type="submit">Register</button>
     </form>
   );

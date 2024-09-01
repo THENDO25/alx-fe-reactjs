@@ -14,28 +14,28 @@ const FormikForm = () => {
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={registrationSchema}
       onSubmit={(values, { setSubmitting }) => {
-        // Call API to register user
-        console.log(values);
+        // API call to register user
+        console.log('Registering user:', values);
         setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
         <Form>
-          <div>
-            <label>Username:</label>
+          <label>
+            Username:
             <Field type="text" name="username" />
-            <ErrorMessage name="username" component="p" />
-          </div>
-          <div>
-            <label>Email:</label>
+            <ErrorMessage name="username" component="div" />
+          </label>
+          <label>
+            Email:
             <Field type="email" name="email" />
-            <ErrorMessage name="email" component="p" />
-          </div>
-          <div>
-            <label>Password:</label>
+            <ErrorMessage name="email" component="div" />
+          </label>
+          <label>
+            Password:
             <Field type="password" name="password" />
-            <ErrorMessage name="password" component="p" />
-          </div>
+            <ErrorMessage name="password" component="div" />
+          </label>
           <button type="submit" disabled={isSubmitting}>
             Register
           </button>
