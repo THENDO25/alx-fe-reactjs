@@ -7,7 +7,23 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts);
+  const {
+    data,
+    error,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery(
+    'posts', // key
+    fetchPosts, // function to fetch data
+    {
+      // Options
+      cacheTime: 10000, // cache for 10 seconds
+      staleTime: 30000, // consider data stale after 30 seconds
+      refetchOnWindowFocus: true, // refetch when window regains focus
+      keepPreviousData: true, // keep previous data while refetching
+    }
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -25,8 +41,9 @@ const PostsComponent = () => {
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
+      <button onClick={refetch}>Refetch</button>
     </div>
   );
 };
 
-export default PostsComponent;
+export default PostsComponent
