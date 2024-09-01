@@ -8,11 +8,14 @@ const RegistrationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!email) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: 'Email is required' }));
-    } else if (!password) {
-      setErrors((prevErrors) => ({ ...prevErrors, password: 'Password is required' }));
+    if (!username) {
+      setErrors((prevErrors) => ({ ...prevErrors, username: 'Username is required' }));
+    } else if (!email || !email.includes('@')) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email address' }));
+    } else if (!password || password.length < 8) {
+      setErrors((prevErrors) => ({ ...prevErrors, password: 'Password must be at least 8 characters' }));
     } else {
+    
     }
   };
   return (
