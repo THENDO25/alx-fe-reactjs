@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const TodoList = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Buy milk', completed: false },
-    { id: 2, text: 'Walk the dog', completed: true },
+    { id: 2, text: 'Walk the dog', completed: false },
   ]);
 
   const addTodo = (text) => {
@@ -11,11 +11,7 @@ const TodoList = () => {
   };
 
   const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
 
   const deleteTodo = (id) => {
@@ -28,12 +24,12 @@ const TodoList = () => {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <span
-              style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
-              }}
-              onClick={() => toggleTodo(todo.id)}
-            >
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => toggleTodo(todo.id)}
+            />
+            <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
               {todo.text}
             </span>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
@@ -60,8 +56,9 @@ const AddTodoForm = ({ addTodo }) => {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
+        placeholder="Add new todo"
       />
-      <button type="submit">Add Todo</button>
+      <button type="submit">Add</button>
     </form>
   );
 };

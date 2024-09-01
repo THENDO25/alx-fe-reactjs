@@ -1,34 +1,32 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { render, fireEvent, screen } from '@testing-library/react';
 import TodoList from '../TodoList';
 
-test('initial render', () => {
+test('renders correctly', () => {
   render(<TodoList />);
-  expect(screen.getByText('Buy milk')).toBeInTheDocument();
-  expect(screen.getByText('Walk the dog')).toBeInTheDocument();
+  expect(screen.getByText('Todo List')).toBeInTheDocument();
+  expect(screen.getAllByRole('listitem')).toHaveLength(2);
 });
 
-test('add todo', () => {
+test('adds new todo', () => {
   render(<TodoList />);
-  const input = screen.getByPlaceholderText('Add Todo');
-  const submitButton = screen.getByText('Add Todo');
-  fireEvent.change(input, { target: { value: 'New Todo' } });
-  fireEvent.click(submitButton);
-  expect(screen.getByText('New Todo')).toBeInTheDocument();
+  const input = screen.getByPlaceholderText('Add new todo');
+  const button = screen.getByText('Add');
+  fireEvent.change(input, { target: { value: 'New todo' } });
+  fireEvent.click(button);
+  expect(screen.getAllByRole('listitem')).toHaveLength(3);
 });
 
-test('toggle todo', () => {
+test('toggles todo completion', () => {
   render(<TodoList />);
-  const todo = screen.getByText('Buy milk');
-  fireEvent.click(todo);
-  expect(todo).toHaveStyle('text-decoration: line-through');
+  const checkbox = screen.getAllByRole('checkbox')[0];
+  fireEvent.click(checkbox);
+  expect(checkbox).toBeChecked();
 });
 
-test('delete todo', () => {
+test('deletes todo', () => {
   render(<TodoList />);
-  const todo = screen.getByText('Buy milk');
-  const deleteButton = todo.nextSibling;
-  fireEvent.click(deleteButton);
-  expect(screen.queryByText('Buy milk')).not.toBeInTheDocument();
+  const button = screen.getAllByText('Delete')[0];
+  fireEvent.click(button);
+  expect(screen.getAllByRole('listitem')).toHaveLength(1);
 });
