@@ -1,13 +1,28 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import data from '../data.json';
 
-import React from 'react';
+const RecipeDetail = () => {
+  const [recipe, setRecipe] = useState(null);
+  const { id } = useParams();
 
-const RecipeDetail = ({ recipe }) => {
+  useEffect(() => {
+    const recipeData = data.find((recipe) => recipe.id === parseInt(id));
+    setRecipe(recipeData);
+  }, [id]);
+
   return (
     <div>
-      <h1>{recipe.title}</h1>
-      <p>{recipe.summary}</p>
-      {recipe.instructions && (
+      {recipe && (
         <div>
+          <h1>{recipe.title}</h1>
+          <img src={recipe.image} alt={recipe.title} />
+          <h2>Ingredients:</h2>
+          <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
           <h2>Instructions:</h2>
           <ol>
             {recipe.instructions.map((instruction, index) => (
