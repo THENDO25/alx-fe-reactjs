@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
+  const [steps, setSteps] = useState('');
   const [instructions, setInstructions] = useState('');
   const [errors, setErrors] = useState({});
 
@@ -10,6 +11,7 @@ const AddRecipeForm = () => {
     const newErrors = {};
     if (!title) newErrors.title = 'Title is required';
     if (!ingredients) newErrors.ingredients = 'Ingredients are required';
+    if (!steps) newErrors.steps = 'Steps are required';
     if (!instructions) newErrors.instructions = 'Instructions are required';
     return newErrors;
   };
@@ -21,7 +23,7 @@ const AddRecipeForm = () => {
       setErrors(validationErrors);
     } else {
       // Submit form data to API or handle submission
-      console.log({ title, ingredients, instructions });
+      console.log({ title, ingredients, steps, instructions });
     }
   };
 
@@ -51,6 +53,19 @@ const AddRecipeForm = () => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         {errors.ingredients && <p className="text-red-500">{errors.ingredients}</p>}
+      </div>
+      <div className="mb-4">
+        <label htmlFor="steps" className="block text-sm font-bold mb-2">
+          Steps
+        </label>
+        <input
+          type="number"
+          id="steps"
+          value={steps}
+          onChange={(event) => setSteps(event.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        {errors.steps && <p className="text-red-500">{errors.steps}</p>}
       </div>
       <div className="mb-4">
         <label htmlFor="instructions" className="block text-sm font-bold mb-2">
