@@ -73,6 +73,8 @@ const Search = () => {
         <div>Loading...</div>
       ) : isError ? (
         <div>Error occurred while searching.</div>
+      ) : userData.length === 0 && (username || location || repoCount) ? (
+        <div>Looks like we can't find the user.</div>
       ) : userData.length > 0 ? (
         <div className="mt-4">
           <h2>Search Results:</h2>
@@ -106,7 +108,9 @@ const Search = () => {
             </div>
           )}
         </div>
-      ) : null}
+      ) : (
+        <div>Please enter a username, location, or minimum repository count to search.</div>
+      )}
     </div>
   );
 };
