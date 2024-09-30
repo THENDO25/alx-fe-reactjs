@@ -37,7 +37,7 @@ const Search = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : isError ? (
-        <div>Looks like we can't find the user.</div>
+        <div className="error-message">Looks like we can't find the user.</div>
       ) : userData ? (
         <div className="user-profile">
           <img src={userData.avatar_url} alt={userData.login} />
