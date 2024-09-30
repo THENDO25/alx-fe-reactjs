@@ -6,6 +6,7 @@ const Search = () => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +18,7 @@ const Search = () => {
       setUserData(data);
     } catch (error) {
       setIsError(true);
+      setErrorMessage("Looks like we cant find the user");
     } finally {
       setIsLoading(false);
     }
@@ -37,7 +39,7 @@ const Search = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : isError ? (
-        <div className="error-message">Looks like we can't find the user.</div>
+        <div className="error-message">{errorMessage}</div>
       ) : userData ? (
         <div className="user-profile">
           <img src={userData.avatar_url} alt={userData.login} />
