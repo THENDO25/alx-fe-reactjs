@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserData } from '../services/githubService';
 
+function Search() {
+  return (
+    <div className="search-container">
+      <h2 className="text-gray-600 text-center">Search for Users</h2>
+      <div className="search-results">
+        {/* Search results will be rendered here */}
+      </div>
+      <div className="no-results text-gray-600 text-center">
+        Looks like we can't find the user.
+      </div>
+    </div>
+  );
+}
+
 const Search = () => {
   const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
