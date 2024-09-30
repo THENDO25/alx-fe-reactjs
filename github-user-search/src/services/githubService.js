@@ -13,7 +13,8 @@ const fetchUserData = async (username, location, minRepos, page) => {
   if (location) query.push(`location:${location}`);
   if (minRepos) query.push(`repos:>${minRepos}`);
 
-  const response = await githubApi.get(`search/users?q=${query.join('+')}&page=${page}&per_page=10`);
+  const url = `search/users?q=${query.join('+')}&page=${page}&per_page=10`;
+  const response = await githubApi.get(url);
   return response.data;
 };
 
